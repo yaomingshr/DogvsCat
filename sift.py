@@ -5,7 +5,7 @@ from pylab import *
 
 
 def process_image(imagename,resultname,params="--edge-thresh 10 --peak-thresh 5"):
-    """ Process an image and save the results in a file. """
+    """ Process an image and save the results in a file.  """
 
     if imagename[-3:] != 'pgm':
         # create a pgm file
