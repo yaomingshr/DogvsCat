@@ -18,13 +18,13 @@ for i in range(0,ntrain/2):
         imname = k + str(i) + '.jpg'
         impath = train_path + imname 
         fpath = train_feat_path + imname + '.sift' 
-        sift.process_image(impath,fpath)
+        sift.process_image(impath,fpath,"--edge-thresh 10 --peak-thresh 8")
     print 'get feature(train):' + str(i+1) + '/12,500 finished'
     
 for i in range(1,ntest+1):
     imname = str(i) + '.jpg'
     impath = test_path + imname
     fpath = test_feat_path + imname + '.sift'
-    sift.process_image(impath,fpath)
+    sift.process_image(impath,fpath,"--edge-thresh 10 --peak-thresh 8")
     print 'get feature(test):' + str(i) + '/12,500 finished'
 
