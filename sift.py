@@ -25,12 +25,18 @@ def read_features_from_file(filename):
     """ Read feature properties and return in matrix form. """
     
     f = loadtxt(filename)
+    if f.size == 132: #132 is size of one point, it means the image only got one key point
+        f.shape = (132,1)
+        f = f.transpose()
     return f[:,:4],f[:,4:] # feature locations, descriptors
 
 def get_descriptor(filename):
     """ Read feature descriptor and return in matrix form. """
     
     f = loadtxt(filename)
+    if f.size == 132: #132 is size of one point, it means the image only got one key point
+        f.shape = (132,1)
+        f = f.transpose()
     return f[:,4:] # feature locations, descriptors
 
 
