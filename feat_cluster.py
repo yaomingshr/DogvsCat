@@ -26,8 +26,8 @@ for i in range(1,m+1):
 #nKeypoints = des.shape[0]
 #res_example = zeros(nKeypoints,)
 nkinds = 15
-myMeans = KMeans(n_clusters = nkinds)
-res_example = myMeans.fit_predict(des)
+myMeans = KMeans(n_clusters = nkinds , n_init = 1)
+res_example = myMeans.fit_predict(array(des))
 
 f_res = open('kmeans.res','wb')
 pickle.dump(res_example,f_res)

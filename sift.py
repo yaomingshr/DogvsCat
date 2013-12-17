@@ -51,7 +51,7 @@ def iter_loadtxt(filename, delimiter=' ', skiprows=0, dtype=int):
                 for item in line:
                     yield dtype(float(item))
         iter_loadtxt.rowlength = len(line)
-
+        
     data = np.fromiter(iter_func(), dtype=dtype)
     data = data.reshape((-1, iter_loadtxt.rowlength))
     return data[:,4:]
