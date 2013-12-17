@@ -39,6 +39,23 @@ def get_descriptor(filename):
         f = f.transpose()
     return f[:,4:] # feature locations, descriptors
 
+def iter_loadtxt(filename, delimiter=' ', skiprows=0, dtype=int):
+    if os.path.getsize(filename) == 0:
+        return []
+    def iter_func():
+        with open(filename, 'r') as infile:
+            for _ in range(skiprows):
+                next(infile)
+            for line in infile:
+                line = line.rstrip().split(delimiter)
+                for item in line:
+                    yield dtype(float(item))
+        iter_loadtxt.rowlength = len(line)
+
+    data = np.fromiter(iter_func(), dtype=dtype)
+    data = data.reshape((-1, iter_loadtxt.rowlength))
+    return data[:,4:]
+
 
 def write_features_to_file(filename,locs,desc):
     """ Save feature location and descriptor to file. """
