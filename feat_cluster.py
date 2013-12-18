@@ -36,13 +36,15 @@ for iter_i in range(1,9):  # should be (0,9),but the first we already have
         for i in range(train_L,train_R):
             ffile = train_feat_path + kind[k] + str(i) + '.jpg.sift'
             des.extend(sift.iter_loadtxt(ffile))
-            print 'got train' + str(train_iter)
+    
+    print 'got train' + str(train_iter)
             #print 'get des(train):' + str(k*m+i+1) + '/25000 finished'
             
     for i in range(test_L,test_R):
         ffile = test_feat_path + str(i) + '.jpg.sift'
         des.extend(sift.iter_loadtxt(ffile))
-        print 'got test' + str(test_iter)
+       
+    print 'got test' + str(test_iter)
         #print 'get des(test):' + str(i) + '/12500 finished'
 
 
