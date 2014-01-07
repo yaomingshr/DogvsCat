@@ -13,7 +13,7 @@ m_by_iter = 4000
 nkinds = 80
 myMeans = KMeans(n_clusters = nkinds)
 
-for iter_i in range(1,9):  # should be (0,9),but the first we already have
+for iter_i in range(0,9):  # should be (0,9),but the first we already have
     des = []
     a_des = []
     train_iter = iter_i / 3

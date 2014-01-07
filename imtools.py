@@ -89,3 +89,10 @@ def plot_2D_boundary(plot_range,points,decisionfcn,labels,values=[0]):
         plot(points[i][incorrect_ndx,0],points[i][incorrect_ndx,1],'o',color=clist[i])
     
     axis('equal')
+
+
+def linecount(f_name):
+    ffile = open(f_name)
+    count = len(ffile.readlines())
+    ffile.close()
+    return count
