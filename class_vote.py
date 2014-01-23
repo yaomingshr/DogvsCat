@@ -5,12 +5,13 @@ import pickle
 from numpy import *
 
 p_list = [zeros((4000,3)),zeros((4000,3)),zeros((4500,3))]
-clf = svm.SVC()
+clf = svm.SVC(C = 0.8)
 for train_iter in range(0,3):
     for test_iter in range(0,3):
         fname = 'train' + str(train_iter) + '-test' + str(test_iter) + '.ares'
         ffile = open(fname,'rb')
         p_temp = pickle.load(ffile)
+        p_temp = p_temp / 2
         ffile.close()
         boftt = 8000
         if train_iter == 2:

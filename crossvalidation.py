@@ -4,7 +4,8 @@ import csv
 import pickle
 from numpy import *
 
-clf = svm.SVC(C = 0.8)
+test_c = 0.8
+clf = svm.SVC(C = test_c)
 for train_iter in range(0,3):
     for test_iter in range(0,3):
         fname = 'train' + str(train_iter) + '-test' + str(test_iter) + '.ares'
@@ -36,5 +37,6 @@ for train_iter in range(0,3):
             if i == 0:
                 dcount = dcount + 1
         rRate = dcount / (cvNum * 2.0)
+        print 'C=' + str(test_c)
         print 'svm' + str(train_iter) + str(test_iter) + ':' + str(rRate)
         exit(0)
