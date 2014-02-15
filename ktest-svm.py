@@ -10,8 +10,8 @@ from sklearn.decomposition import PCA
 train_feat_path = '../trainfeature/'
 kind = ['cat.','dog.']
 
-fk_name = 'test-k300.kres'
-ares_fname = 'test-k300.ares'
+fk_name = 'test-k500.kres'
+#ares_fname = 'test-k300.ares'
 
 fk = open(fk_name,'rb')
 n_kres = pickle.load(fk)
@@ -23,7 +23,7 @@ for k in kind:
     for i in range(0,2999):
         ffile = train_feat_path + k + str(i) + '.jpg.sift'
         lcount = imtools.linecount(ffile)
-        kres_temp = zeros((1,300))
+        kres_temp = zeros((1,500))
         for tt in range(suml_count,suml_count+lcount):
             kres_temp[0,n_kres[tt]] = kres_temp[0,n_kres[tt]] + 1
         suml_count = suml_count + lcount
@@ -32,20 +32,20 @@ for k in kind:
         aRes.extend(sf_kres)
 aRes = array(aRes)
 
-clf = svm.SVC()#C = 0.8)
+clf = svm.SVC(C = 0.8)
 
-n_components = 90
-pca = PCA(n_components=n_components, whiten=True).fit(aRes)
+#n_components = 90
+#pca = PCA(n_components=n_components, whiten=True).fit(aRes)
 
 #aRes = aRes / 2
 y = append(zeros(2000),ones(2000),0)
 X = append(aRes[0:2000],aRes[2999:4999],0)
-X_train_pca = pca.transform(X)
-clf.fit(X_train_pca,y)
+#X_train_pca = pca.transform(X)
+clf.fit(X,y)
 test_data = append(aRes[2000:2999],aRes[4999:5998],0)
-X_test_pca = pca.transform(test_data)
+#X_test_pca = pca.transform(test_data)
 test_y = append(zeros(999),ones(999),0)
-test_got = clf.predict(X_test_pca)
+test_got = clf.predict(test_data)
 
 test_y = int8(test_y)
 test_got = int8(test_got)

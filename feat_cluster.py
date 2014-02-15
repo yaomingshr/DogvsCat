@@ -10,8 +10,9 @@ kind = ['cat.','dog.']
 m = 12500
 m_by_iter = 4000
 
-nkinds = 80
-myMeans = KMeans(n_clusters = nkinds)
+nkinds = 500
+n_jobs = 3
+myMeans = KMeans(n_clusters = nkinds,n_jobs = n_jobs)
 
 for iter_i in range(0,9):  # should be (0,9),but the first we already have
     des = []

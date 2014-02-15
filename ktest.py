@@ -8,7 +8,7 @@ train_feat_path = '../trainfeature/'
 test_feat_path = '../testfeature/'
 kind = ['cat.','dog.']
 
-nkinds = 300
+nkinds = 500
 myMeans = KMeans(n_clusters = nkinds,n_jobs = 3)
 
 tra_num = 4000
@@ -24,7 +24,7 @@ print 'got all features, now kmeans...'
 a_des = array(des)
 res_arr = myMeans.fit_predict(a_des)
 print 'kmeans finished, now save to file'
-res_fname = 'test-k300.kres'
+res_fname = 'test-k500.kres'
 f_res = open(res_fname,'wb')
 pickle.dump(res_arr,f_res)
 f_res.close()
