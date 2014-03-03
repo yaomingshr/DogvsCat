@@ -3,5 +3,6 @@
 *.pyc
 *.sift
 *.pgm
-*.DS_Store
+.DS_Store
 *.zip
+*.kres
